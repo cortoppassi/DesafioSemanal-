@@ -1,44 +1,36 @@
 var listadeRegistro = []
-
-const registrar =()=> {
-var nome = document.getElementById('nome').value;
-var preco = document.getElementById('preco').value;
-var quantidade = document.getElementById('quantidade').value;
-
-    var dados = {
-        nomedoProduto: nome,
+function adicionarRegistro() {
+    var nome = document.getElementById('nome').value;
+    var preco = document.getElementById('preco').value;
+    var quantidade = document.getElementById('quantidade').value;
+    
+    var registro = {
+        produto: nome,
         preco: preco,
         quantidade: quantidade
     };
-    listadeRegistro.push(dados);
-
-   var elementoLi = document.createElement('li');
-   lista.appendChild(elementoLi);
-   
-   
-  
-    var btnExcluir = document.createElement("button")
-    lista.appendChild(btnExcluir)
-    btnExcluir.innerHTML = "Exluir"
-    btnExcluir.onclick = () => {
-        excluir()
-    }
-
-    var btnEditar = document.createElement("button")
-    lista.appendChild(btnEditar)
-    btnEditar.innerHTML = "Editar"
-    btnEditar.onclick = () => {
-        editar()
-    }
-
-   
+    listadeRegistro.push(registro)
+    listar();
 };
-function excluir() {
-    alert('ok')
-}
-function editar() {
-    alert('ok')
-}
 function listar() {
-    elementoLi.push(listadeRegistro)
-}
+    
+    var li = document.createElement('li');
+    var listaHTML = document.getElementById('listaHTML')
+    listaHTML.append(li);
+
+    var btnExcluir = document.createElement("button")
+    listaHTML.appendChild(btnExcluir)
+    btnExcluir.innerHTML = "Exluir"
+    btnExcluir.onclick = () => { excluir()};
+
+    const metodoMap = listadeRegistro.map((registro) => {
+        li.append(registro.produto)
+    })
+
+    console.log(metodoMap)
+};
+
+function excluir() {
+    listadeRegistro.pop()
+
+};

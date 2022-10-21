@@ -25,8 +25,14 @@ function listar() {
 
     const metodoMap = listadeRegistro.map((registro) => {
         li.append(registro.produto)
+        if(registro.produto == registro.produto){
+            li.append(registro.preco)
+        }
+        if(registro.preco == registro.preco){
+            li.append(registro.quantidade)
+        }
     })
-
+    
     console.log(metodoMap)
 };
 
